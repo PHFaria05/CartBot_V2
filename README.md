@@ -1,3 +1,10 @@
+## Integrantes
+| Nome       | RA       | Papel                  |
+|-----------|---------|-----------------------|
+| Pedro Faria | 2224201517 | LÍDER/PESQUISADOR |
+| Rian Mascarenhas | 2224106376 | DESENVOLVEDOR/DESIGNER |
+| Buno Gil Ferreita | 2224104380 | APRESENTADOR/REDATOR |
+
 # 🚗 CartBot V2
 > **O seu assistente automotivo inteligente.**
 
