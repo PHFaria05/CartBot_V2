@@ -48,23 +48,53 @@ function newChat() {
   renderMessages();
 }
 
+// Função para excluir conversa específica
+function deleteChat(id) {
+  if (confirm('Tem certeza que deseja excluir esta conversa?')) {
+    delete chatHistory[id];
+    saveChats();
+
+    // Se a conversa excluída era a atual, cria uma nova
+    if (currentChatId === id) {
+      newChat();
+    } else {
+      renderChatHistory();
+    }
+  }
+}
 function renderChatHistory() {
   const container = document.getElementById('chatHistory');
   container.innerHTML = '';
   Object.entries(chatHistory)
     .reverse()
     .forEach(([id, chat]) => {
-      const title = chat.messages.length > 0 
-        ? (chat.messages[0].text.length > 30 ? chat.messages[0].text.substring(0, 30) + '...' : chat.messages[0].text)
-        : chat.title;
-      const div = document.createElement('div');
-      div.className = `p-3 rounded-lg cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 ${id === currentChatId ? 'bg-blue-50 dark:bg-gray-700 font-medium' : ''}`;
-      div.textContent = title;
-      div.onclick = () => loadChat(id);
-      container.appendChild(div);
-    });
-}
+  const title = chat.messages.length > 0 
+    ? (chat.messages[0].text.length > 30 ? chat.messages[0].text.substring(0, 30) + '...' : chat.messages[0].text)
+    : chat.title;
+  
+  const div = document.createElement('div');
+  div.className = `p-3 rounded-lg cursor-pointer flex justify-between items-center hover:bg-gray-100 dark:hover:bg-gray-700 ${id === currentChatId ? 'bg-blue-50 dark:bg-gray-700 font-medium' : ''}`;
+  
+  // Nome/título da conversa
+  const span = document.createElement('span');
+  span.textContent = title;
+  span.onclick = () => loadChat(id);
 
+  // Botão de excluir
+  const delBtn = document.createElement('button');
+  delBtn.textContent = '🗑️';
+  delBtn.className = 'text-red-500 hover:text-red-700 ml-2';
+  delBtn.onclick = (e) => {
+    e.stopPropagation(); // impede abrir o chat ao clicar no botão
+    deleteChat(id);
+  };
+
+  div.appendChild(span);
+  div.appendChild(delBtn);
+  container.appendChild(div);
+});
+
+  }
 function loadChat(id) {
   currentChatId = id;
   currentMessages = chatHistory[id]?.messages || [];
