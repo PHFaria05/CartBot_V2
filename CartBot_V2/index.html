@@ -4,6 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>CartBot-V12</title>
+  <!-- Ative o modo de tema por classe -->
+  <script>
+    window.tailwind = window.tailwind || {};
+    tailwind.config = {
+      darkMode: 'class',
+      theme: { extend: {} }
+    };
+  </script>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="style.css">
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
@@ -37,7 +45,7 @@
     </div>
 
     <!-- Main Chat Area -->
-    <div class="flex-1 flex flex-col">
+    <div id="main" class="flex-1 flex flex-col">
       <div id="chatContainer" class="flex-1 overflow-y-auto p-4 pb-20 md:pb-4">
         <div id="messages" class="max-w-3xl mx-auto space-y-6"></div>
       </div>

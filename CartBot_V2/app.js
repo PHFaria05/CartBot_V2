@@ -1,5 +1,5 @@
 // API Key do Google AI Studio
-const API_KEY = 'AIzaSyCk0V645HYE4GQtk5Z9tn1__zVcTzKB_tw';
+const API_KEY = 'REPLACE_WITH_YOUR_KEY'; // use backend/env, não comitar a chave real
 const MODEL_NAME = 'gemini-2.0-flash-001';
 const API_URL = `https://generativelanguage.googleapis.com/v1/models/${MODEL_NAME}:generateContent?key=${API_KEY}`;
 let currentChatId = Date.now().toString();
@@ -29,6 +29,9 @@ function loadTheme() {
   if (isDark) {
     document.documentElement.classList.add('dark');
     document.getElementById('themeIcon').textContent = '☀️';
+  } else {
+    document.documentElement.classList.remove('dark');
+    document.getElementById('themeIcon').textContent = '🌙';
   }
 }
 //escolher tema
