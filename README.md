@@ -78,10 +78,10 @@ A seguir estão os principais indicadores obtidos durante os testes do **CartBot
 
 | Gráfico | Descrição |
 |----------|------------|
-| ![Tempo de Resposta](/figures/tempo_resposta.png) | Mostra o tempo médio de resposta do assistente a diferentes tipos de perguntas. |
-| ![Tipos de Dúvidas](/figures/tipos_duvidas.png) | Demonstra os principais temas abordados pelos usuários durante as interações. |
-| ![Coerência das Respostas](/figures/coerencia.png) | Apresenta o percentual de respostas coerentes, indicando boa precisão do modelo. |
-| ![Evolução do Projeto](/figures/evolucao.png) | Compara os indicadores da versão inicial (V1) com a versão atual (V2). |
-| ![Satisfação dos Usuários](/figures/satisfacao.png) | Mostra a avaliação média dos usuários após o uso do chatbot. |
+| ![Tempo de Resposta](CartBot_V2/figuras/tempo_resposta.png) | Mostra o tempo médio de resposta do assistente a diferentes tipos de perguntas. |
+| ![Tipos de Dúvidas](CartBot_V2/figuras/tipos_duvidas.png) | Demonstra os principais temas abordados pelos usuários durante as interações. |
+| ![Coerência das Respostas](CartBot_V2/figuras/coerencia.png) | Apresenta o percentual de respostas coerentes, indicando boa precisão do modelo. |
+| ![Evolução do Projeto](CartBot_V2/figuras/evolucao.png) | Compara os indicadores da versão inicial (V1) com a versão atual (V2). |
+| ![Satisfação dos Usuários](CartBot_V2/figuras/satisfacao.png) | Mostra a avaliação média dos usuários após o uso do chatbot. |
 
 > Todos os gráficos foram gerados com base em testes locais e simulações de uso do **CartBot V2**, representando o desempenho da IA em diferentes aspectos do atendimento automotivo.
