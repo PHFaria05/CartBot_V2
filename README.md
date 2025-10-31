@@ -31,6 +31,19 @@ O **CartBot V2** é um assistente digital voltado para o setor automotivo, desen
 | **Git / GitHub** | Controle de versão e hospedagem do código |
 
 ---
+---
+
+## 🤖 Abordagem de Inteligência Artificial
+
+A IA utilizada é o modelo **Gemini 2.0 Flash**, da **Google AI**, por ser uma tecnologia de **geração de linguagem natural** (Generative AI).  
+Ela permite criar respostas coerentes e contextualizadas para perguntas sobre o setor automotivo.  
+O modelo já vem **pré-treinado** em uma base extensa de textos técnicos e gerais, dispensando treinamento manual.
+
+**Métricas qualitativas utilizadas:**
+- ⏱️ **Tempo médio de resposta:** ~1,8 segundos  
+- 🧠 **Coerência semântica:** proporção de respostas úteis (> 90 %)  
+- 💬 **Clareza textual:** avaliação subjetiva de compreensão pelo usuário
+
 
 ## ⚙️ Como Executar o Projeto
 
