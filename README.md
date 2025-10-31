@@ -50,3 +50,38 @@ O modelo já vem **pré-treinado** em uma base extensa de textos técnicos e ger
 1. **Clone este repositório:**
    ```bash
    git clone https://github.com/PHFaria05/CartBot_V2.git
+   ---
+
+## 🚀 Próximos Passos
+- Adicionar função de voz (fala e escuta) usando Web Speech API.  
+- Criar armazenamento de histórico em nuvem (Firebase).  
+- Otimizar interface para dispositivos móveis.
+
+---
+
+## 👨‍💻 Créditos
+Desenvolvido por:  
+- **Pedro Faria** — Líder / Pesquisador  
+- **Rian Mascarenhas** — Desenvolvedor / Designer  
+- **Bruno Gil Ferreira** — Apresentador / Redator  
+
+---
+
+## ⚖️ Licença
+Projeto educacional — **MIT License**
+
+---
+
+## 📊 Resultados e Gráficos (Etapa 5)
+
+A seguir estão os principais indicadores obtidos durante os testes do **CartBot V2**:
+
+| Gráfico | Descrição |
+|----------|------------|
+| ![Tempo de Resposta](figures/tempo_resposta.png) | Mostra o tempo médio de resposta do assistente a diferentes tipos de perguntas. |
+| ![Tipos de Dúvidas](figures/tipos_duvidas.png) | Demonstra os principais temas abordados pelos usuários durante as interações. |
+| ![Coerência das Respostas](figures/coerencia.png) | Apresenta o percentual de respostas coerentes, indicando boa precisão do modelo. |
+| ![Evolução do Projeto](figures/evolucao.png) | Compara os indicadores da versão inicial (V1) com a versão atual (V2). |
+| ![Satisfação dos Usuários](figures/satisfacao.png) | Mostra a avaliação média dos usuários após o uso do chatbot. |
+
+> Todos os gráficos foram gerados com base em testes locais e simulações de uso do **CartBot V2**, representando o desempenho da IA em diferentes aspectos do atendimento automotivo.
