@@ -1,5 +1,5 @@
 // API Key do Google AI Studio
-const API_KEY = 'REPLACE_WITH_YOUR_KEY'; // use backend/env, não comitar a chave real
+const API_KEY = 'REPLACE_WITH_YOUR_KEY';
 const MODEL_NAME = 'gemini-2.0-flash-001';
 const API_URL = `https://generativelanguage.googleapis.com/v1/models/${MODEL_NAME}:generateContent?key=${API_KEY}`;
 let currentChatId = Date.now().toString();
@@ -23,7 +23,8 @@ function setupEventListeners() {
   document.getElementById('newChatBtn').addEventListener('click', newChat);
   document.getElementById('themeToggle').addEventListener('click', toggleTheme);
 }
-//carregar tema
+
+// Carregar tema salvo
 function loadTheme() {
   const isDark = localStorage.getItem('theme') === 'dark';
   if (isDark) {
@@ -34,14 +35,16 @@ function loadTheme() {
     document.getElementById('themeIcon').textContent = '🌙';
   }
 }
-//escolher tema
+
+// Alternar tema
 function toggleTheme() {
   document.documentElement.classList.toggle('dark');
   const isDark = document.documentElement.classList.contains('dark');
   localStorage.setItem('theme', isDark ? 'dark' : 'light');
   document.getElementById('themeIcon').textContent = isDark ? '☀️' : '🌙';
 }
-//botao de novo chat
+
+// Criar novo chat
 function newChat() {
   currentChatId = Date.now().toString();
   currentMessages = [];
@@ -51,13 +54,12 @@ function newChat() {
   renderMessages();
 }
 
-// Função para excluir conversa específica
+// Excluir conversa específica
 function deleteChat(id) {
   if (confirm('Tem certeza que deseja excluir esta conversa?')) {
     delete chatHistory[id];
     saveChats();
 
-    // Se a conversa excluída era a atual, cria uma nova
     if (currentChatId === id) {
       newChat();
     } else {
@@ -65,39 +67,38 @@ function deleteChat(id) {
     }
   }
 }
+
 function renderChatHistory() {
   const container = document.getElementById('chatHistory');
   container.innerHTML = '';
   Object.entries(chatHistory)
     .reverse()
     .forEach(([id, chat]) => {
-  const title = chat.messages.length > 0 
-    ? (chat.messages[0].text.length > 30 ? chat.messages[0].text.substring(0, 30) + '...' : chat.messages[0].text)
-    : chat.title;
-  
-  const div = document.createElement('div');
-  div.className = `p-3 rounded-lg cursor-pointer flex justify-between items-center hover:bg-gray-100 dark:hover:bg-gray-700 ${id === currentChatId ? 'bg-blue-50 dark:bg-gray-700 font-medium' : ''}`;
-  
-  // Nome/título da conversa
-  const span = document.createElement('span');
-  span.textContent = title;
-  span.onclick = () => loadChat(id);
+      const title = chat.messages.length > 0
+        ? (chat.messages[0].text.length > 30 ? chat.messages[0].text.substring(0, 30) + '...' : chat.messages[0].text)
+        : chat.title;
 
-  // Botão de excluir
-  const delBtn = document.createElement('button');
-  delBtn.textContent = '🗑️';
-  delBtn.className = 'text-red-500 hover:text-red-700 ml-2';
-  delBtn.onclick = (e) => {
-    e.stopPropagation(); // impede abrir o chat ao clicar no botão
-    deleteChat(id);
-  };
+      const div = document.createElement('div');
+      div.className = `p-3 rounded-lg cursor-pointer flex justify-between items-center hover:bg-gray-100 dark:hover:bg-gray-700 ${id === currentChatId ? 'bg-blue-50 dark:bg-gray-700 font-medium' : ''}`;
 
-  div.appendChild(span);
-  div.appendChild(delBtn);
-  container.appendChild(div);
-});
+      const span = document.createElement('span');
+      span.textContent = title;
+      span.onclick = () => loadChat(id);
 
-  }
+      const delBtn = document.createElement('button');
+      delBtn.textContent = '🗑️';
+      delBtn.className = 'text-red-500 hover:text-red-700 ml-2';
+      delBtn.onclick = (e) => {
+        e.stopPropagation();
+        deleteChat(id);
+      };
+
+      div.appendChild(span);
+      div.appendChild(delBtn);
+      container.appendChild(div);
+    });
+}
+
 function loadChat(id) {
   currentChatId = id;
   currentMessages = chatHistory[id]?.messages || [];
@@ -135,12 +136,11 @@ function renderMessages() {
     if (msg.role === 'user') {
       bubble.textContent = msg.text;
     } else {
-
       const html = marked.parse(msg.text);
       bubble.innerHTML = html;
       hljs.highlightAll();
     }
-//botao de copiar mensagem
+
     if (msg.role === 'model') {
       const copyBtn = document.createElement('button');
       copyBtn.className = 'copy-btn';
@@ -168,16 +168,21 @@ function scrollToBottom() {
 async function sendMessage() {
   const input = document.getElementById('userInput');
   const text = input.value.trim();
-  if (!text) return;
 
-  // Adicionar mensagem do usuário
+  // 🚫 Evita envio de mensagens vazias
+  if (!text) {
+    alert('⚠️ Por favor, digite uma mensagem antes de enviar!');
+    return;
+  }
+
+  // Adiciona a mensagem do usuário
   currentMessages.push({ role: 'user', text });
   saveCurrentChat();
   renderMessages();
   input.value = '';
   input.style.height = '56px';
 
-  // Mostrar animação de "digitando"
+  // Mostra animação de "digitando"
   showTypingIndicator();
 
   try {
@@ -185,16 +190,21 @@ async function sendMessage() {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        contents: [{
+        contents: [
+          {
             role: "user",
-            parts: [{
-              text: `Você é um assistente especializado em veículos para leigos. Responda de forma clara, simples e prática. 
-              Tópicos comuns: consumo de combustível (km/l), como trocar óleo, capacidade do tanque, valor médio de peças, 
-              manutenção básica, significado de luzes no painel, etc. 
-              Se a pergunta não for sobre carros, gentilmente redirecione para o tema. 
-              
-              Pergunta do usuário: ${text}`
-            }]
+            parts: [
+              {
+                text: `Você é um assistente especializado em veículos para leigos. 
+                Responda de forma clara, simples e prática. 
+                Tópicos comuns: consumo de combustível (km/l), como trocar óleo, 
+                capacidade do tanque, valor médio de peças, manutenção básica, 
+                significado de luzes no painel, etc. 
+                Se a pergunta não for sobre carros, gentilmente redirecione para o tema. 
+
+                Pergunta do usuário: ${text}`
+              }
+            ]
           }
         ]
       })
@@ -214,10 +224,10 @@ async function sendMessage() {
     const data = await response.json();
     const aiText = data.candidates[0].content.parts[0].text;
 
-    // Remover animação de digitando
+    // Remove o indicador de digitação
     removeTypingIndicator();
 
-    // Adicionar resposta da IA
+    // Adiciona resposta da IA
     currentMessages.push({ role: 'model', text: aiText });
     saveCurrentChat();
     renderMessages();
