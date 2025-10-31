@@ -105,7 +105,7 @@ function loadChat(id) {
   renderMessages();
   renderChatHistory();
 }
-
+// === Renderiza todas as mensagens na tela ===
 function renderMessages() {
   const container = document.getElementById('messages');
   container.innerHTML = '';
@@ -164,7 +164,7 @@ function scrollToBottom() {
   const container = document.getElementById('chatContainer');
   container.scrollTop = container.scrollHeight;
 }
-
+// === Envia a mensagem do usuário e processa a resposta da IA ===
 async function sendMessage() {
   const input = document.getElementById('userInput');
   const text = input.value.trim();
