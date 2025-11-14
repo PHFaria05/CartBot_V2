@@ -112,6 +112,7 @@ Projeto educacional — **MIT License**
 
 ## 📊 Resultados e Gráficos (Etapa 5)
 
+```
 CartBot_V12/
 │
 ├── index.html
@@ -143,7 +144,7 @@ CartBot_V12/
 │
 └── README.md
     └── Documentação do projeto
-
+```
 
 A seguir estão os principais indicadores obtidos durante os testes do **CartBot V2**:
 
