@@ -11,7 +11,6 @@
 O **CartBot V2** é um assistente digital voltado para o setor automotivo, desenvolvido com o objetivo de oferecer uma interface interativa e moderna para auxiliar usuários em tarefas relacionadas a veículos — seja simular atendimentos, responder dúvidas, ou facilitar interações com um sistema de suporte.
 
 ---
-
 ## 🧠 Funcionalidades
 
 - 💬 Interface de chat interativa  
@@ -45,12 +44,51 @@ O modelo já vem **pré-treinado** em uma base extensa de textos técnicos e ger
 - 💬 **Clareza textual:** avaliação subjetiva de compreensão pelo usuário
 
 
-## ⚙️ Como Executar o Projeto
+## ⚙️ Como Executar o Projeto no PC
+**Pré-Requisitos PC(WINDOWS / macOS / LINUX)**
+   - Node.js ou Python3 instalado
+   - Navegador (Chrome, Edge, Firefox...)
+   - (IMPORTANTE) API Key do Google Ai Studio
 
 1. **Clone este repositório:**
    ```bash
    git clone https://github.com/PHFaria05/CartBot_V2.git
-   ---
+2. **Abra o terminal na pasta do projeto**
+   - cd /caminho/para/CartBot_V2
+     
+3. Abra o arquivo App.js e substitua a API key
+   - const API_KEY = 'REPLACE_WITH_YOUR_KEY';
+   - const API_KEY = 'SUA_CHAVE_API_AQUI';
+     
+4. rode o servidor em um local (porta 8000)
+   - python -m http.server 8000
+    ou usando Node
+   - npx serve . -1 8000 
+
+5. abra o navegador e acesse:
+   - https://localhost:8000
+
+
+## ⚙️ Como Executar o Projeto no ANDROID
+**Pré-Requisitos ANDROID (Termux)**
+1. Istalar termux (play store)
+
+2. **Clone o repositorio**
+  - git clone https://github.com/PHFaria05/CartBot_V2.git
+
+3. **Dentro do Termux dê autorização de acesso ao Storage e instale o python** 
+   - termux-setup-storage  (permitir)
+   - pkg update -y && pkg upgrade -y
+   - pkg install python
+     
+4. **Entre na pasta do bot**
+   - cd caminho/para/CartBot_V2
+
+5. **Iniciar o servidor**
+   - python -m http.server 8000
+
+6. **Abra o navegador e acesse:**
+   - http://localhost:8000
 
 ## 🚀 Próximos Passos
 - Adicionar função de voz (fala e escuta) usando Web Speech API.  
@@ -73,6 +111,39 @@ Projeto educacional — **MIT License**
 ---
 
 ## 📊 Resultados e Gráficos (Etapa 5)
+
+CartBot_V12/
+│
+├── index.html
+│   └── Estrutura da interface principal do chat:
+│       - Sidebar (histórico, tema)
+│       - Área de conversas
+│       - Input de mensagens
+│
+├── app.js
+│   ├── Integração com API Google Gemini
+│   ├── Sistema de múltiplas conversas
+│   ├── Função de criar nova conversa
+│   ├── Função de excluir conversa (🗑️)
+│   ├── Renderização de mensagens e histórico
+│   ├── Sistema de tema claro/escuro
+│   └── Tipagem e animação "digitando..."
+│
+├── style.css
+│   ├── Estilização das bolhas de chat
+│   ├── Animação de fade e typing
+│   ├── Estilo de dark mode
+│   └── Regras para versão mobile
+│
+├── package.json
+│   └── Lista dependências do projeto (ex: @google/genai)
+│
+├── package-lock.json
+│   └── Registro exato das versões das dependências
+│
+└── README.md
+    └── Documentação do projeto
+
 
 A seguir estão os principais indicadores obtidos durante os testes do **CartBot V2**:
 
